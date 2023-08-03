@@ -57,4 +57,19 @@ select * from tbProdutos;
 delete from tbProdutos where codProd = 7;
 
 -- Visualizar os registros excluidos
-select * from tbProdutos
+select * from tbProdutos;
+
+-- Visualizar colunas especificas na tabelas 
+
+select descricao,quantidade from tbProdutos;
+
+-- Mudar o nome da coluna para visualização do úsuario 
+select codProd as 'Código' , descricao as 'Descrição' from tbProdutos;
+
+-- Colunas virtuais somente para mostrar pro úsuario
+ select codProd as 'Código',descricao as 'Descrição', 'Vendido' as 'Status' from tbprodutos;
+
+
+ -- Comndo para desconto
+ select valorUnit * 0.80 as 'Desconto' from tbprodutos;
+
