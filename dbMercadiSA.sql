@@ -112,18 +112,18 @@ on usu.codFunc = func.codFunc;
 
 
 
-select forn.nome, forn.cnpj, prod.descricao
+select forn.nome as "Nome do Fornecedor", forn.cnpj as "cnpj do Fornecedor", prod.descricao as "Nome do Produto"
 from tbProdutos as prod
 inner join tbFornecedores as forn
 on prod.codForn = forn.codForn;
 
-select Cli.nome as Cli, Cli.email as Cli, .Cli.telCel as Cli
+select Cli.nome as "Nome do Cliente", Cli.email as "Email do Cliente", .Cli.telCel as "Telefone do Cliente"
 from tbVendas as Vendi
 inner join tbClientes as Cli
 on Cli.codCli = Vendi.codCli;
 
 
-select cli.nome, cli.email, prod.descricao, vend.dataVenda
+select cli.nome as "Nome do Cliente", cli.email as "Email do Cliente", prod.descricao as "Nome do Produto", vend.dataVenda as "Data da Venda"
 from tbVendas as vend 
 inner join tbClientes as cli
 on vend.codCli = cli.codCli
@@ -132,7 +132,7 @@ on vend.codProd = prod.codProd
 where codVendas = 1;
 
 
-select cli.nome, cli.email, prod.descricao, vend.dataVenda
+select cli.nome as "Nome do Cliente", cli.email as "Email do Cliente", prod.descricao as "Nome do Produto", vend.dataVenda as "Data da Venda"
 from tbVendas as vend 
 inner join tbClientes as cli
 on vend.codCli = cli.codCli
@@ -140,7 +140,7 @@ inner join tbProdutos as prod
 on vend.codProd = prod.codProd
 where prod.descricao like '%b%';
 
-select usu.nome,func.nome,vendi.dataVenda,vendi.quantidade,vendi.valorTotal
+select usu.nome as "Nome do usuário",func.nome as "Nome do funcionário", vendi.dataVenda as "Data da Venda" ,vendi.quantidade as "Quantidade da Venda ", vendi.valorTotal as "Valor da venda"
 from tbUsuarios as usu
 inner join tbFuncionarios as func
 on func.codFunc = usu.codFunc
@@ -148,7 +148,7 @@ inner join tbVendas as vendi
 on vendi.codUsu = usu.codUsu
 where func.codFunc = 1;
 
-select cli.nome, vendi.dataVenda, prod.descricao, forn.nome
+select cli.nome as "Nome do Cliente", vendi.dataVenda as "Data da Venda ", prod.descricao as "Nome do Produto", forn.nome as "Nome do fornecedor"
 from tbClientes as cli
 inner join tbVendas as vendi
 on cli.codCli = vendi.codCli  
@@ -157,7 +157,8 @@ on vendi.codProd = prod.codProd
 inner join tbFornecedores as forn
 on prod.codForn = forn.codForn;
 
-select func.nome, usu.nome, vendi.dataVenda, vendi.valorTotal, prod.descricao, prod.dataEntrada, forn.nome, .forn.cnpj
+select func.nome as "Nome do funcionário", usu.nome as "Nome do Funcionário", vendi.dataVenda as "Data da venda", vendi.valorTotal as "Valor total da Venda", prod.descricao as "Nome do Produto",
+prod.dataEntrada as "Data de entrada", forn.nome as "Nome do Fornecedor", forn.cnpj as "Número do cnpj"
 from tbFuncionarios as func
 inner join tbUsuarios as usu
 on usu.codFunc = func.codFunc
@@ -167,3 +168,15 @@ inner join tbProdutos as prod
 on prod.codProd = vendi.codProd
 inner join tbFornecedores = forn
 on forn.codForn = prod.codForn;
+
+-- cnpj do Fornecedor
+-- Pergunta para tabela funcionarios qual os produtos cadastrados
+
+select prod.descricao, prod.quantidade from tbFuncionarios as func 
+left join tbProdutos as prod on func.codFunc = prod.codProd;
+
+select prod.descricao, prod.quantidade from tbFuncionarios as func
+right join tbProdutos as prod on func.codFunc = prod.codProd;
+
+select prod.descricao, prod.quantidade from tbFuncionarios as func
+inner join tbProdutos as prod on func.codFunc = prod.codProd;

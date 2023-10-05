@@ -208,16 +208,30 @@ delete from tbVenda where id_venda = 9;
 delete from tbVenda where id_venda = 10;
 
 
+insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(1,1,400,40);
+insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(2,2,500,40);
+insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(3,3,600,40);
+insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(4,4,700,40);
+insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(5,5,200,40);
 insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(1,1,33,40);
 insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(2,2,33,40);
 insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(3,3,33,40);
 insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(4,4,33,40);
 insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(5,5,33,40);
-insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(6,6,33,40);
-insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(1,1,33,40);
-insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(1,1,33,40);
-insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(1,1,33,40);
-insert into tbItens_da_venda(id_venda,id_livro,qtd,subtotal)values(1,1,33,40);
+
+update tbItens_da_venda set subtotal = 33 where id_venda = 1;
+update tbItens_da_venda set subtotal = 33 where id_venda = 2;
+update tbItens_da_venda set subtotal = 33 where id_venda = 3;
+update tbItens_da_venda set subtotal = 33 where id_venda = 4;
+update tbItens_da_venda set subtotal = 33 where id_venda = 5;
+
+
+delete from tbItens_da_venda where id_venda = 1;
+delete from tbItens_da_venda where id_venda = 2;
+delete from tbItens_da_venda where id_venda = 3;
+delete from tbItens_da_venda where id_venda = 4;
+delete from tbItens_da_venda where id_venda = 5;
+
 
 
 
@@ -227,3 +241,4 @@ select * from tbCliente order by id_cliente;
 select * from tbLivro order by id_livro;
 select * from tbEscreve order by id_autor;
 select * from tbVenda order by id_venda;
+select * from tbItens_da_venda order by id_venda;
